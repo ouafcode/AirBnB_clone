@@ -67,3 +67,7 @@ EOF  help  quit
 (hbnb) 
 $
 ```
+
+## Authors
+Kaoutar En-Nabirha | Github: [KAWTREN]
+Ouafae Saim | Github: [ouafcode]
