@@ -69,5 +69,5 @@ $
 ```
 
 ## Authors
-Kaoutar En-Nabirha | Github: [KAWTREN]
-Ouafae Saim | Github: [ouafcode]
+* **Kaoutar En-Nabirha** <[KAWTREN]>
+* **Ouafae Saim**  <[ouafcode]>
