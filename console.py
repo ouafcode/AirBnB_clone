@@ -13,11 +13,12 @@ class HBNBCommand(cmd.Cmd):
 
     def do_EOF(self, line):
         """ to quit the command ^D """
+        print("")
         return True
+
     def emptyline(self):
-        if self.lastcmd:
-            self.lastcmd = ""
-            return self.onecmd('\n')
+        """ shouldn’t execute anything """
+        pass
 
 
 
