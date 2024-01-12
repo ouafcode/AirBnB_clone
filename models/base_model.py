@@ -22,20 +22,26 @@ class BaseModel:
                     else:
                         self.__dict__[key] = value
     def save(self):
-        """Save the instance to the storage."""
-        # Update the updated_at attribute
+        """updates the public instance attribute updated_at \
+        with the current datetime"""
+
         self.updated_at = datetime.now()
-        # Save the instance to the storage
-        storage.save()              
+        storage.new(self)
+        storage.save()
+          
          
     def __str__(self):
         "print: [<class name>] (<self.id>) <self.__dict__>"
         return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
    
-    def to_dict(self):
-        "returns a dictionary containing all keys/values of __dict__"
-        obj_dict = self.__dict__.copy()
-        obj_dict['__class__'] = self.__class__.__name__
-        obj_dict['created_at'] = self.created_at.isoformat()
-        obj_dict['updated_at'] = self.updated_at.isoformat()
-        return obj_dict
+    def to_dict(self) -> dict:
+        """returns a dictionary containing all keys/values \
+        of __dict__ of the instance"""
+
+        dictionary = dict(self.__dict__)
+        dictionary['__class__'] = self.__class__.__name__
+        dictionary['created_at'] = \
+            datetime.isoformat(dictionary.get('created_at'))
+        dictionary['updated_at'] = \
+            datetime.isoformat(dictionary.get('updated_at'))
+        return dictionary
