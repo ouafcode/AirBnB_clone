@@ -1,12 +1,18 @@
 #!/usr/bin/python3
-""" class Base Model defines that attributes/methods for other classes """
+""" class Base Model defines
+that attributes/methods for other classes
+"""
+
+
 import uuid
 from datetime import datetime
 import models
 
 
 class BaseModel():
+
     """ Define BaseModel class """
+
     def __init__(self, *args, **kwargs):
         """ Initialisation of Instance
 
@@ -33,19 +39,21 @@ class BaseModel():
 
     def __str__(self):
         """ return string representation """
+
         return ("[{}] ({}) {}".format(type(self).__name__,
                 self.id, self.__dict__))
 
     def save(self):
         """ update date with the current date """
+
         self.updated_at = datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """ return a dict with all keys/values """
+
         dict_1 = self.__dict__.copy()
         dict_1["__clas__"] = type(self).__name__
         dict_1["created_at"] = dict_1["created_at"].isoformat()
         dict_1["updated_at"] = dict_1["updated_at"].isoformat()
-
         return (dict_1)

@@ -12,7 +12,9 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
+
     """ define command class
+
     Attribute:
         prompt (str): command prompt showed
     """

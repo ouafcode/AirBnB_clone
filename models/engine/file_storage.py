@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """ serialization amd deserialization Instances """
+
+
 import json
 import datetime
 from models.base_model import BaseModel
@@ -13,6 +15,7 @@ from models.state import State
 
 class FileStorage():
     """ Define class filestorage """
+
     __file_path = "file.json"
     __objects = {}
 
