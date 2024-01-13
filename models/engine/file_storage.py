@@ -57,5 +57,5 @@ class FileStorage:
             obj = {}
             for k, v in obj_dict.items():
                 if "__class__" in v:
-                    obj[k] = self.classes().get(v["__class__"], object)(**v)
+                    obj[k] = self.cls_dict().get(v["__class__"], object)(**v)
             FileStorage.__objects = obj
