@@ -21,7 +21,7 @@ class HBNBCommand(cmd.Cmd):
 
     prompt = "(hbnb)"
     classes = {
-        "Amenty",
+        "Amenity",
         "BaseModel",
         "City",
         "Place",
