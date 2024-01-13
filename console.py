@@ -20,7 +20,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb)"
-    __classe = {
+    __classe = [
         "Amenity",
         "BaseModel",
         "City",
@@ -28,7 +28,7 @@ class HBNBCommand(cmd.Cmd):
         "Review",
         "State",
         "User"
-    }
+        ]
 
     def do_quit(self, arg):
         """ Quit command to exit the program """
@@ -109,31 +109,24 @@ class HBNBCommand(cmd.Cmd):
         arg = arg.split()
         if len(arg) == 0:
             print("** class name missing **")
-        if arg[0] not in HBNBCommand.__classe:
+        elif arg[0] not in HBNBCommand.__classe:
             print("** class doesn't exist **")
-        if len(arg) == 1:
+        elif len(arg) == 1:
             print("** instance id missing **")
-        if len(arg) == 2:
+        elif len(arg) == 2:
             print("** attribute name missing **")
-        if len(arg) == 3:
+        elif len(arg) == 3:
             print("** value missing **")
-        if len(arg) == 4:
-            obj = obj_dict["{}.{}".format(arg[0], arg[1])]
-            if arg[2] in obj.__class__.__dict__.keys():
-                type_v = type(obj.__class__.__dict__[arg[2]])
-                obj.__dict__[arg[2]] = type_v(arg[3])
-            else:
-                obj.__dict__[arg[2]] = arg[3]
-        elif type(eval(arg[2])) == dict:
-            obj = obj_dict["{}.{}".format(arg[0], arg[1])]
-            for k, v in eval(arg[2]).items():
-                if (k in obj.__class__.__dict__.keys() and
-                        type(obj.__class__.__dict__[k]) in {str, int, float}):
-                    type_v = type(obj.__class__.__dict__[k])
-                    obj.__dict__[k] = type_v(v)
-                else:
-                    obj.__dict__[k] = v
-        storage.save()
+        else:
+            key = arg[0] + '.' + arg[1]
+            obj = obj_dict.get(key, None)
+
+            if not obj:
+                print("** no instance found **")
+                return
+
+            setattr(obj, arg[2], arg[3].lstrip('"').rstrip('"'))
+            storage.save()
 
 
 if __name__ == '__main__':
