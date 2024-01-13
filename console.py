@@ -97,7 +97,7 @@ class HBNBCommand(cmd.Cmd):
         else:
             obj_dit = []
             for obj in storage.all().values():
-                if len(arg) > 0 and arg[0] == type(obj).__name__:
+                if len(arg) > 0 and arg[0] == obj.__class__.__name__:
                     obj_dit.append(obj.__str__())
                 elif len(arg) == 0:
                     obj_dit.append(obj.__str__())
@@ -106,7 +106,7 @@ class HBNBCommand(cmd.Cmd):
     def do_update(self, arg):
         """  Updates an instance based on the class name and id """
         obj_dict = storage.all()
-        arg = arg.split(" ")
+        arg = arg.split()
         if len(arg) == 0:
             print("** class name missing **")
         elif arg[0] not in HBNBCommand.__classe:
