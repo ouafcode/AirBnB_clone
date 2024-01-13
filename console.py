@@ -67,7 +67,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         elif len(arg) == 1:
             print("** instance id missing **")
-        elif "{}.{}".format(arg[0], arg[1]) not in obj_dict.keys():
+        elif "{}.{}".format(arg[0], arg[1]) not in obj_dict:
             print("** no instance found **")
         else:
             print(obj_dict["{}.{}".format(arg[0], arg[1])])
@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
     def do_all(self, arg):
         """ Prints all string representation of all instances """
         arg = arg.split()
-        if arg[0] not in HBNBCommand.__classe:
+        if len(arg) > 0 and arg[0] not in HBNBCommand.__classe:
             print("** class doesn't exist **")
         else:
             obj_dit = []
