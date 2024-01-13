@@ -5,11 +5,6 @@ from datetime import datetime
 import models
 
 
-def imp_fct():
-    # Importing locally to avoid circular import
-    from models import storage
-
-
 class BaseModel():
     """ Define BaseModel class """
     def __init__(self, *args, **kwargs):
