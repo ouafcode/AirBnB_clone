@@ -37,7 +37,7 @@ class BaseModel():
                 self.id, self.__dict__))
 
     def save(self):
-        """ update the date with the current date """
+        """ update date with the current date """
         self.updated_at = datetime.now()
         models.storage.save()
 
