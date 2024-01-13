@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 """ serialization amd deserialization Instances """
-import os
 import json
 import datetime
 from models.base_model import BaseModel
