@@ -2,7 +2,12 @@
 """ class Base Model defines that attributes/methods for other classes """
 import uuid
 from datetime import datetime
-from models import storage
+import models
+
+
+def imp_fct():
+    # Importing locally to avoid circular import
+    from models import storage
 
 
 class BaseModel():
@@ -11,8 +16,8 @@ class BaseModel():
         """ Initialisation of Instance
 
         Args:
-            - args: list of args
-            - kwargs: key and value args in dict format
+            - *args: list of args
+            - **kwargs: key and value args in dict format
         """
 
         if kwargs is not None and kwargs != {}:
@@ -29,16 +34,17 @@ class BaseModel():
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
+        """ return string representation """
         return ("[{}] ({}) {}".format(type(self).__name__,
                 self.id, self.__dict__))
 
     def save(self):
         """ update the date with the current date """
         self.updated_at = datetime.now()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """ return a dict with all keys/values """

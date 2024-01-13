@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """ program for command interpreter """
 import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
 from models.user import User
 from models.state import State
 from models.city import City
@@ -12,13 +12,13 @@ from models.review import Review
 
 
 class HBNBCommand(cmd.Cmd):
-    """ define command class 
+    """ define command class
     Attribute:
-        prompt (str): command prompt showed 
+        prompt (str): command prompt showed
     """
 
     prompt = "(hbnb)"
-    classes  = {
+    classes = {
         "Amenty",
         "BaseModel",
         "City",
@@ -49,7 +49,7 @@ class HBNBCommand(cmd.Cmd):
         elif arg[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
         else:
-            print(arg[0].id)
+            print(eval(arg[0])().id)
             storage.save()
 
     def do_show(self, arg):
@@ -96,9 +96,9 @@ class HBNBCommand(cmd.Cmd):
             obj_dit = []
             for obj in storage.all().values():
                 if len(arg) > 0 and arg[0] == type(obj).__name__:
-                    obj_dict.append(obj.str())
+                    obj_dit.append(obj.__str__())
                 elif len(arg) == 0:
-                    obj_dict.append(obj.__str__())
+                    obj_dit.append(obj.__str__())
             print(obj_dit)
 
     def do_update(self, arg):
