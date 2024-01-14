@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """ class Base Model defines
-that attributes/methods for other classes
-"""
+that attributes/methods for other classes"""
 
 
 import uuid
@@ -11,7 +10,7 @@ import models
 
 class BaseModel():
 
-    """ Define BaseModel class """
+    """ Define BaseModel class"""
 
     def __init__(self, *args, **kwargs):
         """ Initialisation of Instance
