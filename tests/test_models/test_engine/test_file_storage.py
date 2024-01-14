@@ -49,6 +49,41 @@ class TestFileStorage(unittest.TestCase):
         self.assertIsNotNone(FileStorage.save)
         self.assertIsNotNone(FileStorage.reload)
 
+    def test_storage_empty(self):
+        """check storage is not empty"""
+
+        self.assertIsNotNone(self.storage.all())
+
+    def test_storage_all_type(self):
+        """check type of storage"""
+
+        self.assertEqual(dict, type(self.storage.all()))
+
+    def test_new(self):
+        """check new user"""
+        obj = self.storage.all()
+        self.u1.id = 1234
+        self.u1.name = "ouafae"
+        self.storage.new(self.u1)
+        key = "{}.{}".format(self.u1.__class__.__name__, self.u1.id)
+        self.assertIsNotNone(obj[key])
+
+    def test_json_loading(self):
+        """ Checks Storage Engine works."""
+
+        with open("file.json") as f:
+            dic = json.load(f)
+
+            self.assertEqual(isinstance(dic, dict), True)
+
+    def test_file_existence(self):
+        """
+        Checks from Storage Engine works.
+        """
+
+        with open("file.json") as f:
+            self.assertTrue(len(f.read()) > 0)
+
 
 if __name__ == '__main__':
     unittest.main()
