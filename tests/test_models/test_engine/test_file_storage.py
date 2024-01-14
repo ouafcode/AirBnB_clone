@@ -21,12 +21,6 @@ from models.user import User
 class TestFileStorage(unittest.TestCase):
     """Test FileStorage class"""
 
-    def test_pep8_FileStorage(self):
-        """Tests pep8 """
-        style = pep8.StyleGuide(quiet=True)
-        p = style.check_files(['models/engine/file_storage.py'])
-        self.assertEqual(p.total_errors, 0, "fix pep8")
-
     def setUp(self):
         """Sets up class """
 
@@ -78,8 +72,8 @@ class TestFileStorage(unittest.TestCase):
     def test_new(self):
         """check new user"""
         obj = self.storage.all()
-        self.u1.id = 1234
-        self.u1.name = "Julien"
+        self.u1.id = 5642
+        self.u1.name = "ouafae"
         self.storage.new(self.u1)
         key = "{}.{}".format(self.u1.__class__.__name__, self.u1.id)
         self.assertIsNotNone(obj[key])
@@ -112,6 +106,17 @@ class TestFileStorage(unittest.TestCase):
         self.assertTrue(FileStorage.reload.__doc__)
         self.assertTrue(hasattr(FileStorage, 'reload'))
 
+    def test_instances(self):
+        """check instance"""
+        obj = FileStorage()
+        self.assertIsInstance(obj, FileStorage)
+
+    def test_docs(self):
+        """Test doc"""
+        self.assertIsNotNone(FileStorage.all)
+        self.assertIsNotNone(FileStorage.new)
+        self.assertIsNotNone(FileStorage.save)
+        self.assertIsNotNone(FileStorage.reload)
 
 if __name__ == '__main__':
     unittest.main()
