@@ -1,3 +1,4 @@
+0x00. AirBnB clone - The console
 <div>
   <img src="https://user-images.githubusercontent.com/69850751/175876062-f252cc1b-bd44-46b3-9ddb-a7692b2eede4.png"     alt="">
 </div>
@@ -15,8 +16,7 @@ The project currently only implements the back-end console.
  - Serialization/Deserialization
  - *args, **kwargs
  - datetime
- - More coming soon!
-
+ - More coming soon
 ## Console 💻
 
 the console is command line interpreter that permits management of Backend of AirBnB project. 
