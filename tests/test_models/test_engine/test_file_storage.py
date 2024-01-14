@@ -2,6 +2,8 @@
 """Unittest for BaseModel"""
 
 
+import json
+import os
 import unittest
 from datetime import datetime
 from models.engine.file_storage import FileStorage
